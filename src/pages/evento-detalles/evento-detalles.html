@@ -1,0 +1,78 @@
+<!--
+  Generated template for the EventoDetallesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalles del evento {{ evento?.folio }}{{ evento?.serie }}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button clear (click)="goToEditar(evento.id)">
+        Editar
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <h2 ion-text><b>{{evento?.titulo}} de {{ evento?.cuenta_nombre}}</b></h2>
+    <h3 *ngIf="tiene_ubicacion">{{evento?.ubicacion}}</h3>
+    <br/>
+    <p>
+      {{evento?.fecha_ini | moment:'dddd, DD' }} de {{evento?.fecha_ini | moment:'MMMM' }} de {{evento?.fecha_ini |
+      moment:'YYYY' }}<br/>
+      de {{evento?.fecha_ini | moment: 'hh:mm'}} a {{evento?.fecha_fin | moment: 'hh:mm'}}
+    </p>
+    <!--
+  </ion-item>
+  <ion-item>
+  -->
+    <br/>
+    <h3>Responsable</h3>
+    <p>
+      {{evento?.responsable_iniciales}}
+    </p>
+  </ion-item>
+  <ion-item *ngIf="tiene_descripcion">
+    <h3>Notas</h3>
+    <p>
+      {{evento?.descripcion}}
+    </p>
+  </ion-item>
+  <ion-item *ngIf="tiene_consulta">
+    <h2><b>Última Consulta {{evento?.ultima_consulta_label}}</b></h2>
+    <br/>
+    <div [innerHtml]="evento.ultima_consulta_texto"></div>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <button ion-button clear full color="danger">Eliminar evento</button>
+</ion-footer>
+<style>
+  ion-card {
+    width: 100%;
+    height: 300px;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  ion-list:first-child {
+    margin-top: 32px;
+  }
+
+  ion-list + ion-list {
+    margin-top: 0;
+  }
+
+  ion-select.full-width {
+    width: 100%;
+    max-width: 100%;
+  }
+</style>
+

@@ -1,0 +1,44 @@
+<!--
+  Generated template for the EventosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Eventos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToAgregar()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let evento of eventos" (click)="goToDetalles(evento.id)">
+      <!-- <ion-avatar item-left>
+        <img [src]="eventos.avatar_url">
+      </ion-avatar> -->
+      <h2>{{ evento.fecha_ini }}</h2>
+      <h3>{{ evento.folio }}{{ evento.serie }} {{ evento.titulo }}</h3>
+      {{ evento.cuenta_nombre }}
+      <br/> {{ evento.responsable_nombre }}
+      <br/>
+      <ion-badge item-right>{{ evento?.estatus }}</ion-badge>
+      <!-- <ion-icon name="arrow-forward" item-right></ion-icon>-->
+    </button>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"
+                                 loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,26 @@
+<!--
+  Generated template for the PacienteDetallesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Paciente {{ paciente?.folio }}{{ paciente?.serie }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-tabs class="tabs-icon" [color]="isAndroid ? 'danger' : 'primary'">
+    <ion-tab tabIcon="contact" [root]="rootPage" [rootParams]="tabParams"></ion-tab>
+    <ion-tab tabIcon="archive" [root]="consultasPage" [rootParams]="tabParams"></ion-tab>
+    <ion-tab tabIcon="calendar" [root]="eventosPage" [rootParams]="tabParams"></ion-tab>
+    <ion-tab tabIcon="analytics" [root]="rootPage" [rootParams]="tabParams"></ion-tab>
+  </ion-tabs>
+</ion-content>

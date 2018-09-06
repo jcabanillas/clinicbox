@@ -1,0 +1,106 @@
+<!--
+  Generated template for the PacienteDetallesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Paciente {{ paciente?.folio }}{{ paciente?.serie }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card no-padding no-margin style="width: 100% !important; display: contents;">
+    <ion-card-header>
+      <ion-item>
+        <ion-avatar item-center>
+          <img src="{{ paciente.imagen }}">
+        </ion-avatar>
+      </ion-item>
+      <ion-item style="text-align: center">
+        <h2>{{ paciente.nombre }}</h2>
+        <p>{{ paciente.genero }} de {{ paciente.edad }}</p>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let telefono of telefonos">
+          <h2>{{ telefono.tipo }}</h2>
+          <a style="text-decoration: none" href="tel:{{ telefono.numero }}">{{ telefono.numero }}</a>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item *ngFor="let email of emails">
+          <h2>{{ email.tipo }}</h2>
+          <a style="text-decoration: none" href="mailto:{{ email.email }}">{{ email.email }}</a>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item *ngIf="tiene_fecha_nacimiento">
+          <h3>Fecha de Nacimiento</h3>
+          <p>
+            {{paciente?.fecha_nacimiento}}
+          </p>
+        </ion-item>
+        <ion-item *ngIf="tiene_lugar_nacimiento">
+          <h3>Lugar de Nacimiento</h3>
+          <p>
+            {{paciente?.lugar_nacimiento}}
+          </p>
+        </ion-item>
+        <ion-item *ngIf="tiene_doctor_referencia">
+          <h3>Doctor de Referencia</h3>
+          <p>
+            {{paciente?.doctor_referencia}}
+          </p>
+        </ion-item>
+        <ion-item *ngIf="tiene_aseguradora">
+          <h3>Aseguradora</h3>
+          <p>
+            {{paciente?.aseguradora}}
+          </p>
+        </ion-item>
+        <ion-item *ngIf="tiene_tipo_sangre">
+          <h3>Tipo de Sangre</h3>
+          <p>
+            {{paciente?.tipo_sangre}}
+          </p>
+        </ion-item>
+        <ion-item *ngIf="tiene_descripcion">
+          <h3>Notas</h3>
+          <p>
+            {{paciente?.descripcion}}
+          </p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+    <!--
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>4 Comments</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+-->
+  </ion-card>
+</ion-content>
